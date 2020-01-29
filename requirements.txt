@@ -1,3 +1,4 @@
+colorlog
 PySimpleGUIQt
 sense_emu
 sense_hat

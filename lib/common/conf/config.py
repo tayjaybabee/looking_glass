@@ -1,6 +1,8 @@
 class Config(object):
 
     def __init__(self, custom_file=None):
+        import logging
+        log = logging.getLogger
         from configparser import ConfigParser
         self.parser = ConfigParser()
         self.parser.read('config.ini')
@@ -8,7 +10,6 @@ class Config(object):
 
     def write(self):
         import os
-        print(os.getcwd())
-        working_conf = open('conf/config.ini')
+        working_conf = open(os.getcwd() + '/conf/config.ini')
         self.config.write(working_conf)
         working_conf.close()
