@@ -5,13 +5,14 @@ class SenseInfo(object):
         import logging
         self.log = logging.getLogger(__name__)
 
-    @staticmethod
-    def _get_device_():
+    def _get_device_(self):
         """
         Instantiate the sense-hat and return an instance to the worker
         :return:
         """
+        log = self.log
         try:
+            log.debug('Trying to import the "sense_hat" module.')
             from sense_hat import SenseHat
         except ModuleNotFoundError:
             from sense_emu import SenseHat

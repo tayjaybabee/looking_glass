@@ -1,3 +1,4 @@
+PySimpleGUI
 colorlog
 PySimpleGUIQt
 sense_emu

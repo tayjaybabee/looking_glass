@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='shiney',
+    name='LookingGlass',
     version='1.0',
     packages=[''],
     url='https://softworks.inspyre.tech',
