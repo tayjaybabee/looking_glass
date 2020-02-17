@@ -1,8 +1,8 @@
 
 
 
-def identify(name, root=False):
-    from lib.common.logger import LoggerError
+def _identify_(name, root=False, root_part=None):
+    from lib.common.logger import NonsensicalIDRequestError
 
     """
     Create a module/class-specific logger
@@ -27,9 +27,12 @@ def identify(name, root=False):
     :raises: NonsensicalIDRequestError
     """
 
-    if root:
-        name = 'LookingGlass.App'
-        return name
-    else:
-        if name == '' or name is None:
-            raise LoggerError.RegistrationError.NonsensicalIDRequestError(info='If not root, you must provide a name')
+
+
+def identify(name, root=False, root_part=None):
+    from lib.common.logger import NonsensicalIDRequestError
+    try:
+        _identify_(name, root=root, root_part=root_part)
+    except NonsensicalIDRequestError as e:
+        raise
+

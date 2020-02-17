@@ -1,16 +1,19 @@
 class LoggerError(Exception):
     pass
 
-    class RegistrationError(BaseException):
-        pass
 
-        class NonsensicalIDRequestError(BaseException):
-            def __init__(self, logger=None, info=None):
-                self.e_message = 'This argument combination is nonsensical. Please submit a real ID request.'
-                if info is None:
-                    self.info = 'No further information provided. Please see docs.'
-                else:
-                    self.info = info
+class RegistrationError(LoggerError, BaseException):
+    pass
+
+
+class NonsensicalIDRequestError(RegistrationError, BaseException):
+
+    def __init__(self, logger=None, info=None):
+        self.e_message = 'This argument combination is nonsensical. Please submit a real ID request.'
+        if info is None:
+            self.info = 'No further information provided. Please see docs.'
+        else:
+            self.info = info
 
 
 from lib.common.helpers.decorators import debug

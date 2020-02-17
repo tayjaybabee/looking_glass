@@ -44,7 +44,7 @@ class App(LookingGlass):
 
             if event == 'fetch_device_info':
                 print(event, values)
-                if 'Add Device' in values:
+                if values['device_combo'].lower() == 'add device':
                     print(values)
                     from lib.gui.popups.warnings import no_device_for_fetch as no_device_popup
                     if no_device_popup():
