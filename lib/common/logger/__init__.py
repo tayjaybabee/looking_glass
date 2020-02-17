@@ -1,4 +1,22 @@
-def start():
+class LoggerError(Exception):
+    pass
+
+    class RegistrationError(BaseException):
+        pass
+
+        class NonsensicalIDRequestError(BaseException):
+            def __init__(self, logger=None, info=None):
+                self.e_message = 'This argument combination is nonsensical. Please submit a real ID request.'
+                if info is None:
+                    self.info = 'No further information provided. Please see docs.'
+                else:
+                    self.info = info
+
+
+from lib.common.helpers.decorators import debug
+
+@debug
+def start(name):
     import logging
     from colorlog import ColoredFormatter
 
@@ -14,8 +32,7 @@ def start():
             'CRITICAL': 'bold_red',
         }
     )
-    name = str(f'LookingGlass.App')
-    print(name, 'for logger')
+
     logger = logging.getLogger(name)
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)

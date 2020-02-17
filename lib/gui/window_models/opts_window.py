@@ -16,8 +16,6 @@ class OptsWindow(GUI):
         :param config: The config object from the App class
         """
 
-        self.opts_win = qt.Window('Options', layout=self.main_layout(), )
-
     @staticmethod
     def _localization_frame_():
         """

@@ -1,7 +1,4 @@
-from looking_glass import App
-
-
-class Config(App):
+class Config:
 
     def check_existing(self):
         log = self.log
@@ -40,7 +37,9 @@ class Config(App):
     def __init__(self, custom_conf=None):
         import os
         from configparser import ConfigParser
-        import glob
+        from platform import platform, release, version
+
+
 
         parser = ConfigParser()
         import logging
@@ -48,7 +47,11 @@ class Config(App):
         self.log = log
         log.debug(f'Logger started for {self.__class__.__name__}')
 
-        self.config_dir = str(f"{os.getcwd()}/conf/")
+        if str('linux') in platform().lower():
+            self.config_dir = str(f"{os.getcwd()}/conf/")
+        elif str('windows') in platform().lower():
+            self.config_dir = str(f"{os.getcwd()}\\conf\\")
+
         config_dir = self.config_dir
         log.debug(f"Default 'config' directory is {config_dir}")
         self.conf_file = None

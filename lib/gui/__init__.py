@@ -1,4 +1,3 @@
-
 root_name = str()
 logger_started = False
 
@@ -28,8 +27,6 @@ class GUI(object):
         import PySimpleGUIQt as qt
         from .window_models.opts_window import OptsWindow
 
-        opts_window = OptsWindow(config)
-        self.opts_win = opts_window.opts_win
 
         # Give the GUI frameworks easily accessible names
         self.qt = qt
@@ -62,13 +59,14 @@ class GUI(object):
 
         builder = TopWindow(config)
 
-        return builder.top_window
+        return builder.window
 
     @staticmethod
-    def opts_window(config):
+    def options_window(config):
         from .window_models.opts_window import OptsWindow
+        import PySimpleGUIQt as qt
 
-        builder = OptsWindow(config).opts_win
+        win = OptsWindow(config)
 
-        return builder
-
+        win = qt.Window('LookingGlass Options', text_justification='center', location=(0, 0), layout=win.main_layout())
+        return win

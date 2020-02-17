@@ -22,8 +22,6 @@ class App(LookingGlass):
 
         gr_ui = GUI(self.config)
 
-        opts_win = gr_ui.opts_window(self.config)
-
         log = self.log
 
         log.debug('Getting TopWindow')
@@ -41,15 +39,29 @@ class App(LookingGlass):
                 log.info('User indicated a desire to exit.')
                 exit()
 
+            # If the user presses "Fetch Device Data" the system will check if they have a device to fetch data from,
+            # and if they do; run operations that would populate the fields in the gui and refresh
+
+            if event == 'fetch_device_info':
+                print(event, values)
+                if 'Add Device' in values:
+                    print(values)
+                    from lib.gui.popups.warnings import no_device_for_fetch as no_device_popup
+                    if no_device_popup():
+                        continue
+                    else:
+                        break
+
             # If the options window isn't already active and the user hit Settings on the main window then read the
             # options window and wait for the user to do something else.
             if not gr_ui.opts_win_active and event == 'Settings::_SETTINGS_BUTTON_':
+                opts_win = gr_ui.options_window(self.config)
                 gr_ui.opts_win_active = True
 
             # Read the window and wait for event
             counter = 0
             while gr_ui.opts_win_active:
-                event2, values2 = gr_ui.opts_win.read(timeout=100)
+                event2, values2 = opts_win.read(timeout=100)
 
                 # If the user presses the X button or presses 'cancel' the options window will close.
                 if event2 is None or event2 == 'opts_win_cancel':
@@ -65,25 +77,22 @@ class App(LookingGlass):
 
                     from lib.common.conf.config import Config
                     Config.write(self.config)
-
-                # If the user presses 'Test Key' we test their API key
-                if event2 == 'check_api_key':
-                    import PySimpleGUI as gui
-                    eprint = gui.EasyPrint()
-                    eprint('Checking API key!')
+                    opts_win.close()
+                    gr_ui.opts_win_active = False
 
     def __init__(self):
         self.logger_started = False
         import lib.common.logger as logger
-        self.log = logger.start()
+        from lib.common.logger.caller import identify
+        name = identify('', True)
+        self.log = logger.start(name)
         from lib.common.conf.config import Config
+
+        looking_glass = LookingGlass()
 
         self.config = Config().config
 
         self.run()
 
 
-if __name__ == "__main__":
-    app = App()
-else:
-    print('Being imported, but not running __init__')
+app = App()
