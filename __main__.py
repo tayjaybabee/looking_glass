@@ -15,13 +15,13 @@ class Application:
                                             'LookingGlass with your Smart Thermostat and other devices and it will use '
                                             'collected data to assist you with cost management, maintaining your '
                                             'comfort, so all you have to focus on is what Inspyres you.',
-                                prefix_chars='`-',
+                                prefix_chars='~+',
                                 epilog='Inspyre Softworks. run.Everything',
                                 allow_abbrev=True
                                 )
 
         # Add some arguments for use in our CLI interface
-        parser.add_argument('-v', '--verbose')
+        parser.add_argument('+v', '~verbose')
 
         args = parser.parse_args()
         print(args)
