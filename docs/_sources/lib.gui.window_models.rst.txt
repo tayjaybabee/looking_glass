@@ -1,0 +1,30 @@
+lib.gui.window\_models package
+==============================
+
+Submodules
+----------
+
+lib.gui.window\_models.opts\_window module
+------------------------------------------
+
+.. automodule:: lib.gui.window_models.opts_window
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lib.gui.window\_models.top\_window module
+-----------------------------------------
+
+.. automodule:: lib.gui.window_models.top_window
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: lib.gui.window_models
+   :members:
+   :undoc-members:
+   :show-inheritance:

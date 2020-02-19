@@ -1,0 +1,7 @@
+LookingGlass module
+===================
+
+.. automodule:: LookingGlass
+   :members:
+   :undoc-members:
+   :show-inheritance:

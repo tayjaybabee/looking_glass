@@ -1,0 +1,18 @@
+lib.gui package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+
+   lib.gui.popups
+   lib.gui.window_models
+
+Module contents
+---------------
+
+.. automodule:: lib.gui
+   :members:
+   :undoc-members:
+   :show-inheritance:

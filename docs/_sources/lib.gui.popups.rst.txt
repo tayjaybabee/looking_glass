@@ -1,0 +1,38 @@
+lib.gui.popups package
+======================
+
+Submodules
+----------
+
+lib.gui.popups.confirmations module
+-----------------------------------
+
+.. automodule:: lib.gui.popups.confirmations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lib.gui.popups.queries module
+-----------------------------
+
+.. automodule:: lib.gui.popups.queries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lib.gui.popups.warnings module
+------------------------------
+
+.. automodule:: lib.gui.popups.warnings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: lib.gui.popups
+   :members:
+   :undoc-members:
+   :show-inheritance:
